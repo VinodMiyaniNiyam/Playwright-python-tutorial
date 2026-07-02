@@ -2,6 +2,8 @@
 
 def calculate_grade(marks):
     # Check if marks are outside the valid range [0, 100] or non-numeric
+    if not isinstance(marks, (int, float)):
+        return "Invalid"
     if marks < 0 or marks > 100:
         return "Invalid"
     

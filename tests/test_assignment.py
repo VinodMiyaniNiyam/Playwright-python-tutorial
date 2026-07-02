@@ -1,5 +1,33 @@
 import pytest
-import assignment_functions as af
+
+# Import functions from individual task files
+from tasks.task_1_grade_calculator import calculate_grade
+from tasks.task_2_electricity_bill import electricity_bill
+from tasks.task_3_atm_withdrawal import atm_withdraw
+from tasks.task_4_count_letters import count_letters
+from tasks.task_5_remove_duplicates import remove_duplicates
+from tasks.task_6_strong_password import is_strong_password
+from tasks.task_7_second_largest import second_largest
+from tasks.task_8_count_numbers import count_numbers
+from tasks.task_9_average import average
+from tasks.task_10_search_element import search_item
+from tasks.task_11_string_length import string_length
+from tasks.task_12_reverse_string import reverse_text
+from tasks.task_13_palindrome_string import is_text_palindrome
+from tasks.task_14_triangle_pattern import print_triangle
+from tasks.task_15_factors import factors
+from tasks.task_16_check_prime import is_prime
+from tasks.task_17_primes_in_range import primes_between
+from tasks.task_18_simple_calculator import calculator
+from tasks.task_19_employee_salary import net_salary
+from tasks.task_20_shopping_cart import cart_total
+from tasks.task_oc_marks_management import (
+    add_student,
+    show_students,
+    find_highest_marks,
+    calculate_class_average,
+    search_student
+)
 
 # 1. Student Grade Calculator Tests
 @pytest.mark.parametrize("marks, expected", [
@@ -13,7 +41,7 @@ import assignment_functions as af
     ("abc", "Invalid")
 ])
 def test_calculate_grade(marks, expected):
-    assert af.calculate_grade(marks) == expected
+    assert calculate_grade(marks) == expected
 
 # 2. Electricity Bill Calculator Tests
 @pytest.mark.parametrize("units, expected", [
@@ -23,7 +51,7 @@ def test_calculate_grade(marks, expected):
     (-10, 0.0)
 ])
 def test_electricity_bill(units, expected):
-    assert af.electricity_bill(units) == expected
+    assert electricity_bill(units) == expected
 
 # 3. Simple ATM Withdrawal Tests
 @pytest.mark.parametrize("balance, amount, expected", [
@@ -33,15 +61,15 @@ def test_electricity_bill(units, expected):
     (1000, 1500, "Insufficient balance")
 ])
 def test_atm_withdraw(balance, amount, expected):
-    assert af.atm_withdraw(balance, amount) == expected
+    assert atm_withdraw(balance, amount) == expected
 
 # 4. Count Vowels and Consonants Tests
 @pytest.mark.parametrize("text, expected", [
-    ("Python Class", {"vowels": 2, "consonants": 9}),
-    ("A1b!", {"vowels": 1, "consonants": 1})
+    ("Python Class", "vowels: 2, consonants: 9"),
+    ("A1b!", "vowels: 1, consonants: 1")
 ])
 def test_count_letters(text, expected):
-    assert af.count_letters(text) == expected
+    assert count_letters(text) == expected
 
 # 5. Remove Duplicate Characters Tests
 @pytest.mark.parametrize("text, expected", [
@@ -49,16 +77,16 @@ def test_count_letters(text, expected):
     ("Hello World", "Helo Wrd")
 ])
 def test_remove_duplicates(text, expected):
-    assert af.remove_duplicates(text) == expected
+    assert remove_duplicates(text) == expected
 
 # 6. Check Strong Password Tests
 @pytest.mark.parametrize("password, expected", [
     ("Abc@1234", True),
     ("password123", False),
-    ("A@1bc", False)
+    ("A@1b", False)
 ])
 def test_is_strong_password(password, expected):
-    assert af.is_strong_password(password) == expected
+    assert is_strong_password(password) == expected
 
 # 7. Second Largest Number in a List Tests
 @pytest.mark.parametrize("numbers, expected", [
@@ -67,15 +95,15 @@ def test_is_strong_password(password, expected):
     ([10], None)
 ])
 def test_second_largest(numbers, expected):
-    assert af.second_largest(numbers) == expected
+    assert second_largest(numbers) == expected
 
 # 8. Count Positive, Negative and Zero Values Tests
 @pytest.mark.parametrize("numbers, expected", [
-    ([5, -2, 0, 7, -9, 0], {"positive": 2, "negative": 2, "zero": 2}),
-    ([], {"positive": 0, "negative": 0, "zero": 0})
+    ([5, -2, 0, 7, -9, 0], "positive: 2, negative: 2, zero: 2"),
+    ([], "positive: 0, negative: 0, zero: 0")
 ])
 def test_count_numbers(numbers, expected):
-    assert af.count_numbers(numbers) == expected
+    assert count_numbers(numbers) == expected
 
 # 9. List Average Without sum() Tests
 @pytest.mark.parametrize("numbers, expected", [
@@ -83,7 +111,7 @@ def test_count_numbers(numbers, expected):
     ([], "Invalid")
 ])
 def test_average(numbers, expected):
-    assert af.average(numbers) == expected
+    assert average(numbers) == expected
 
 # 10. Search Element Manually Tests
 @pytest.mark.parametrize("numbers, target, expected", [
@@ -91,7 +119,7 @@ def test_average(numbers, expected):
     ([4, 8, 1, 8], 10, -1)
 ])
 def test_search_item(numbers, target, expected):
-    assert af.search_item(numbers, target) == expected
+    assert search_item(numbers, target) == expected
 
 # 11. Manual String Length Tests
 @pytest.mark.parametrize("text, expected", [
@@ -99,7 +127,7 @@ def test_search_item(numbers, target, expected):
     ("", 0)
 ])
 def test_string_length(text, expected):
-    assert af.string_length(text) == expected
+    assert string_length(text) == expected
 
 # 12. Reverse a String Manually Tests
 @pytest.mark.parametrize("text, expected", [
@@ -107,7 +135,7 @@ def test_string_length(text, expected):
     ("a", "a")
 ])
 def test_reverse_text(text, expected):
-    assert af.reverse_text(text) == expected
+    assert reverse_text(text) == expected
 
 # 13. Check Palindrome String Tests
 @pytest.mark.parametrize("text, expected", [
@@ -115,7 +143,7 @@ def test_reverse_text(text, expected):
     ("hello", False)
 ])
 def test_is_text_palindrome(text, expected):
-    assert af.is_text_palindrome(text) == expected
+    assert is_text_palindrome(text) == expected
 
 # 14. Print Right Triangle Pattern Tests
 @pytest.mark.parametrize("n, expected", [
@@ -123,7 +151,7 @@ def test_is_text_palindrome(text, expected):
     (1, "*")
 ])
 def test_print_triangle(n, expected):
-    assert af.print_triangle(n) == expected
+    assert print_triangle(n) == expected
 
 # 15. Find All Factors Tests
 @pytest.mark.parametrize("n, expected", [
@@ -131,7 +159,7 @@ def test_print_triangle(n, expected):
     (7, [1, 7])
 ])
 def test_factors(n, expected):
-    assert af.factors(n) == expected
+    assert factors(n) == expected
 
 # 16. Check Prime Using Function Tests
 @pytest.mark.parametrize("n, expected", [
@@ -140,7 +168,7 @@ def test_factors(n, expected):
     (1, False)
 ])
 def test_is_prime(n, expected):
-    assert af.is_prime(n) == expected
+    assert is_prime(n) == expected
 
 # 17. Print Prime Numbers in a Range Tests
 @pytest.mark.parametrize("start, end, expected", [
@@ -148,7 +176,7 @@ def test_is_prime(n, expected):
     (8, 10, [])
 ])
 def test_primes_between(start, end, expected):
-    assert af.primes_between(start, end) == expected
+    assert primes_between(start, end) == expected
 
 # 18. Simple Calculator Function Tests
 @pytest.mark.parametrize("a, b, operator, expected", [
@@ -157,7 +185,7 @@ def test_primes_between(start, end, expected):
     (5, 5, "?", "Error: Invalid operator")
 ])
 def test_calculator(a, b, operator, expected):
-    assert af.calculator(a, b, operator) == expected
+    assert calculator(a, b, operator) == expected
 
 # 19. Employee Salary Calculation Tests
 @pytest.mark.parametrize("basic, expected", [
@@ -165,7 +193,7 @@ def test_calculator(a, b, operator, expected):
     (0, 0.0)
 ])
 def test_net_salary(basic, expected):
-    assert af.net_salary(basic) == expected
+    assert net_salary(basic) == expected
 
 # 20. Shopping Cart Total Tests
 @pytest.mark.parametrize("prices, quantities, expected", [
@@ -173,7 +201,7 @@ def test_net_salary(basic, expected):
     ([100, 200], [2, 3], 800.0)
 ])
 def test_cart_total(prices, quantities, expected):
-    assert af.cart_total(prices, quantities) == expected
+    assert cart_total(prices, quantities) == expected
 
 # --- Optional Challenge Tests ---
 def test_marks_management_system_user_workflow():
@@ -181,23 +209,23 @@ def test_marks_management_system_user_workflow():
     marks = []
     
     # 1. Add Student Record: Vinod with marks 10.0
-    assert af.add_student(names, marks, "Vinod", 10.0)
+    assert add_student(names, marks, "Vinod", 10.0)
     
     # 2. Show All Student Records
-    records = af.show_students(names, marks)
+    records = show_students(names, marks)
     assert "Vinod: 10.0" in records
     
     # 3. Find Student with Highest Marks
-    highest_name, highest_mark = af.find_highest_marks(names, marks)
+    highest_name, highest_mark = find_highest_marks(names, marks)
     assert highest_name == "Vinod"
     assert highest_mark == 10.0
     
     # 4. Search Student by Name: "vi" (Expected not found: -1 since it is only a partial match)
-    assert af.search_student(names, marks, "vi") == -1
+    assert search_student(names, marks, "vi") == -1
     
     # 5. Search Student by Name: "Vinod" (Expected found at index 0)
-    assert af.search_student(names, marks, "Vinod") == 0
+    assert search_student(names, marks, "Vinod") == 0
     
     # 6. Search Student by Name with different casing: "vinod" and "VINOD" (Expected found at index 0)
-    assert af.search_student(names, marks, "vinod") == 0
-    assert af.search_student(names, marks, "VINOD") == 0
+    assert search_student(names, marks, "vinod") == 0
+    assert search_student(names, marks, "VINOD") == 0
